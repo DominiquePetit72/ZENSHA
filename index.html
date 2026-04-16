@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZENSHA — Naturopathie, Massage & Bien-être</title>
+    <meta name="description" content="Zensha, espace de soin, d'écoute et d'éveil. Naturopathie, massage ayurvédique, aromathérapie. Accompagnement personnalisé par Bérengère.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #00BEC7;
+            --teal-dark: #1A5C77;
+            --green-light: #A1D44C;
+            --green-mint: #2BC2A0;
+            --deep-purple: #2E0659;
+            --dark: #1a2820;
+            --cream: #f9f7f4;
+            --white: #ffffff;
+            --text: #3a3a3a;
+            --text-light: #6b6b6b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        /* ─── NAVIGATION ─── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+            padding: 0.6rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            transition: height 0.4s ease;
+        }
+
+        .navbar.scrolled .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .navbar.scrolled .nav-links a {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s;
+        }
+
+        .navbar.scrolled .nav-toggle span {
+            background: var(--text);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--teal-dark) 50%, var(--green-mint) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(43, 194, 160, 0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 190, 199, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(161, 212, 76, 0.15) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .hero-logo {
+            width: 160px;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green-light), var(--teal));
+            margin: 1.5rem auto;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--teal-dark);
+            border-color: var(--white);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 24px;
+            height: 24px;
+            border-right: 2px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+            transform: rotate(45deg);
+        }
+
+        /* ─── SECTIONS ─── */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            color: var(--teal-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header .subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green-light), var(--teal));
+            margin: 1rem auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ─── INTRO / ABOUT ─── */
+        .intro {
+            background: var(--cream);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .intro-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            border: 2px solid var(--teal);
+            border-radius: 4px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .intro-text .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--teal-dark);
+            margin-top: 1.5rem;
+        }
+
+        .quote-block {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-left: 3px solid var(--teal);
+            background: rgba(0, 190, 199, 0.05);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .quote-block p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--teal-dark);
+            margin-bottom: 0.3rem !important;
+        }
+
+        .quote-block cite {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ─── SERVICES ─── */
+        .services {
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            background: var(--cream);
+            border-radius: 6px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--green-mint));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--teal), var(--green-mint));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--teal-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card .service-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .service-card .duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .service-card .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        /* ─── REASONS ─── */
+        .reasons {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--teal-dark) 100%);
+            color: var(--white);
+        }
+
+        .reasons .section-header h2 {
+            color: var(--white);
+        }
+
+        .reasons .section-header .subtitle {
+            color: var(--green-light);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .reason-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .reason-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .reason-check {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--green-mint));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+        }
+
+        .reason-check svg {
+            width: 12px;
+            height: 12px;
+            fill: var(--white);
+        }
+
+        .reason-item p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.5;
+        }
+
+        /* ─── GALLERY ─── */
+        .gallery {
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(46, 6, 89, 0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .overlay p {
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        /* ─── APPROACH / PHILOSOPHY ─── */
+        .philosophy {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .philosophy-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .philosophy-content p {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy .highlight-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--teal-dark);
+            font-style: italic;
+            line-height: 1.6;
+            margin: 2rem 0;
+        }
+
+        /* ─── CTA SECTION ─── */
+        .cta-section {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .cta-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-questions p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--text);
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--teal), var(--green-mint));
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 190, 199, 0.3);
+        }
+
+        /* ─── TARIFS ─── */
+        .tarifs {
+            background: var(--white);
+        }
+
+        .tarifs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .tarif-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 6px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .tarif-card:hover {
+            border-color: var(--teal);
+            box-shadow: 0 15px 40px rgba(0, 190, 199, 0.1);
+        }
+
+        .tarif-card h3 {
+            font-size: 1.4rem;
+            color: var(--teal-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .tarif-card .tarif-duration {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .tarif-card .tarif-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--teal);
+            font-weight: 500;
+        }
+
+        .tarif-card .tarif-price span {
+            font-size: 1.2rem;
+            vertical-align: super;
+        }
+
+        .tarif-card .tarif-desc {
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ─── CONTACT ─── */
+        .contact {
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--teal-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-header h2 {
+            color: var(--white);
+        }
+
+        .contact .section-header .subtitle {
+            color: var(--green-light);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--teal);
+            flex-shrink: 0;
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--teal);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            font-weight: 400;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--teal-dark);
+            border-color: var(--white);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--dark);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        footer img {
+            height: 35px;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
+        }
+
+        footer .disclaimer {
+            margin-top: 0.8rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.25);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ─── ANIMATIONS ─── */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 992px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .reasons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tarifs-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                color: var(--text) !important;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reasons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                letter-spacing: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="assets/images/logo.png" alt="Zensha">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">A propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <img src="assets/images/logo.png" alt="Zensha" class="hero-logo">
+            <h1>Zensha</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-subtitle">Lieu de retour à soi, d'écoute du corps<br>pour retrouver l'harmonie et la paix intérieure</p>
+            <a href="#services" class="hero-cta">Découvrir mes soins</a>
+        </div>
+        <div class="scroll-indicator"><span></span></div>
+    </section>
+
+    <!-- INTRO / ABOUT -->
+    <section class="intro" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="subtitle">Bienvenue</p>
+                <h2>Mon parcours</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="intro-grid">
+                <div class="intro-image fade-in">
+                    <img src="assets/images/phyto.jpg" alt="Plantes médicinales et naturopathie">
+                </div>
+                <div class="intro-text fade-in">
+                    <p>Passionnée par la vie et soucieuse de prendre soin de ma santé et celle de mes enfants en respectant le vivant, je me suis formée en naturopathie. Celle-ci fait partie de mon quotidien depuis 20 ans.</p>
+                    <p>Je me suis d'abord formée en aromathérapie et en apithérapie avec Hilda Vaelen. Ayant le goût de comprendre le fonctionnement du corps, j'ai poursuivi mon enseignement en naturopathie à l'Isnat, puis approfondi l'ayurveda avec le docteur Anne Verbiest.</p>
+                    <p>Le toucher est pour moi guérisseur du corps, de l'âme et de l'esprit. J'ai approfondi cette approche par une formation sur le toucher conscient, suivie d'une formation en massage ayurvédique avec Benoît Leroy.</p>
+                    <p class="signature">— Bérengère</p>
+                    <div class="quote-block">
+                        <p>« Prends soin de ton corps pour que ton âme ait envie d'y rester »</p>
+                        <cite>— Gandhi</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy">
+        <div class="container">
+            <div class="philosophy-content fade-in">
+                <p class="highlight-text">Zensha est un espace de soin, d'écoute, d'éveil et de connaissance de soi où je vous accueille dans un environnement de confiance.</p>
+                <p>Rencontrer l'autre, le découvrir, l'écouter et l'accompagner de manière individuelle. Donner des outils pour mettre en place une hygiène de vie qui permette de récupérer, garder, retrouver sa santé physique, émotionnelle et spirituelle — tel est ce qui m'anime aujourd'hui.</p>
+                <p>Je vous invite à vous choisir afin de prendre soin de votre corps et ainsi, stimuler son pouvoir d'autoguérison. Grâce à une approche personnalisée, je vous aiderai à trouver un équilibre afin de vivre en harmonie avec votre soi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="subtitle">Mes pratiques</p>
+                <h2>Services</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="services-grid">
+                <!-- Naturopathie -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg>
+                    </div>
+                    <h3>Naturopathie</h3>
+                    <p>La naturopathie prend en compte l'être dans sa globalité. Grâce à différents agents naturels — alimentation, exercice, gestion du stress, plantes — elle aide à stimuler votre force vitale.</p>
+                    <p>Un bilan de vitalité permet de mesurer votre niveau d'énergie, estimer les surcharges et carences pour stimuler et renforcer les capacités de votre organisme.</p>
+                    <div class="service-details">
+                        <span class="duration">1h15</span>
+                        <span class="price">70 &euro;</span>
+                    </div>
+                </div>
+
+                <!-- Aromathérapie -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9zM5.6 10.25c0 1.38 1.12 2.5 2.5 2.5.53 0 1.01-.16 1.42-.44l-.02.19c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5l-.02-.19c.4.28.89.44 1.42.44 1.38 0 2.5-1.12 2.5-2.5 0-1-.59-1.85-1.43-2.25.84-.4 1.43-1.25 1.43-2.25 0-1.38-1.12-2.5-2.5-2.5-.53 0-1.01.16-1.42.44l.02-.19C14.5 2.12 13.38 1 12 1S9.5 2.12 9.5 3.5l.02.19c-.4-.28-.89-.44-1.42-.44-1.38 0-2.5 1.12-2.5 2.5 0 1 .59 1.85 1.43 2.25-.84.4-1.43 1.25-1.43 2.25zM12 5.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5S9.5 9.38 9.5 8s1.12-2.5 2.5-2.5zM3 13c0 4.97 4.03 9 9 9-4.97 0-9-4.03-9-9z"/></svg>
+                    </div>
+                    <h3>Aromathérapie</h3>
+                    <p>L'art de soigner par les huiles essentielles pour l'harmonisation de la santé physique et mentale. Grâce à leur puissance vibratoire, les huiles essentielles nous permettent d'entrer en relation avec les parties les plus profondes de notre être.</p>
+                    <p>En me connectant à votre fréquence, je vous proposerai l'essence qui pourra vous apporter le meilleur soutien énergétique.</p>
+                    <div class="service-details">
+                        <span class="duration">Sur mesure</span>
+                        <span class="price">Inclus</span>
+                    </div>
+                </div>
+
+                <!-- Massage bien-être -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <h3>Massage bien-être harmonisant</h3>
+                    <p>Une incitation à la reconnexion à son corps par l'art du toucher. Un massage englobant alternant force et douceur, aux huiles essentielles.</p>
+                    <p>Toucher la vie par un geste du c&oelig;ur pour nourrir votre âme autant que votre corps. Lâcher-prise, détente profonde, un moment hors du temps.</p>
+                    <div class="service-details">
+                        <span class="duration">1h30</span>
+                        <span class="price">80 &euro;</span>
+                    </div>
+                </div>
+
+                <!-- Massage ayurvédique -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-14h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Massage ayurvédique Abhyanga</h3>
+                    <p>Issu de la tradition du nord de l'Inde, le massage abhyanga constitue un véritable traitement. Avec une huile chaude, des mouvements dynamiques et des pressions, ce soin rééquilibre et fluidifie les énergies.</p>
+                    <p>À la fois tonique et enveloppant, il alterne manœuvres lentes et profondes et manœuvres plus rythmées pour éliminer toxines et impuretés.</p>
+                    <div class="service-details">
+                        <span class="duration">1h30</span>
+                        <span class="price">80 &euro;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMAGE GALLERY -->
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="assets/images/naturo-herbs.png" alt="Naturopathie - plantes et remèdes naturels">
+            <div class="overlay"><p>L'art de la naturopathie</p></div>
+        </div>
+        <div class="gallery-item">
+            <img src="assets/images/aromatherapie.jpg" alt="Aromathérapie - huiles essentielles">
+            <div class="overlay"><p>Huiles essentielles & aromathérapie</p></div>
+        </div>
+        <div class="gallery-item">
+            <img src="assets/images/phyto.jpg" alt="Phytothérapie - plantes médicinales">
+            <div class="overlay"><p>Plantes médicinales</p></div>
+        </div>
+    </div>
+
+    <!-- REASONS TO CONSULT -->
+    <section class="reasons">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="subtitle">Pourquoi consulter</p>
+                <h2>Au moins 10 bonnes raisons</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="reasons-grid fade-in">
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Fatigue, stress, déprime, démotivation</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Problèmes digestifs, ballonnements, transit</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Perte ou prise de poids durable</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Alimentation saine pour toute la famille</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Intolérances et allergies alimentaires</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Migraines récurrentes</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Problèmes de peau : acné, eczéma, psoriasis</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Troubles du sommeil, insomnies</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Troubles hormonaux, ménopause</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Douleurs musculaires et articulaires</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Renforcement des défenses immunitaires</p>
+                </div>
+                <div class="reason-item">
+                    <div class="reason-check"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
+                    <p>Burn-out, récupération en douceur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARIFS -->
+    <section class="tarifs" id="tarifs">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="subtitle">Investir en soi</p>
+                <h2>Tarifs</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="tarifs-grid fade-in">
+                <div class="tarif-card">
+                    <h3>Naturopathie</h3>
+                    <p class="tarif-duration">Séance de 1h15</p>
+                    <p class="tarif-price">70<span>&euro;</span></p>
+                    <p class="tarif-desc">Bilan de vitalité complet et conseils d'hygiène vitale personnalisés</p>
+                </div>
+                <div class="tarif-card">
+                    <h3>Massage harmonisant</h3>
+                    <p class="tarif-duration">Séance de 1h30</p>
+                    <p class="tarif-price">80<span>&euro;</span></p>
+                    <p class="tarif-desc">Massage bien-être aux huiles essentielles, reconnexion corps-esprit</p>
+                </div>
+                <div class="tarif-card">
+                    <h3>Massage Abhyanga</h3>
+                    <p class="tarif-duration">Séance de 1h30</p>
+                    <p class="tarif-price">80<span>&euro;</span></p>
+                    <p class="tarif-desc">Massage ayurvédique traditionnel, rééquilibrage énergétique profond</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="subtitle">Et si vous faisiez un pas vers vous</p>
+                <h2>Prêt(e) à prendre soin de vous ?</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="cta-questions fade-in">
+                <p>Vous désirez nourrir votre corps de manière saine ?</p>
+                <p>Vous voulez vous libérer de votre stress, de toutes vos tensions ?</p>
+                <p>Vous souhaitez améliorer votre bien-être général ?</p>
+            </div>
+            <a href="#contact" class="btn-primary fade-in">Prendre rendez-vous</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <p class="subtitle">Rendez-vous</p>
+                <h2>Contactez-moi</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="contact-content fade-in">
+                <p>Je m'engage à vous accompagner de manière individuelle et personnalisée sur le chemin de la santé. N'hésitez pas à me contacter pour toute question ou pour prendre rendez-vous.</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <a href="tel:+32000000000">Appelez Bérengère</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <a href="mailto:contact@zensha.be">contact@zensha.be</a>
+                    </div>
+                </div>
+                <a href="mailto:contact@zensha.be" class="btn-secondary">Prendre rendez-vous avec Bérengère</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="assets/images/logo.png" alt="Zensha">
+        <p>&copy; 2025 Zensha — Naturopathie, Massage & Bien-être</p>
+        <p class="disclaimer">La naturopathie ne se substitue pas à un traitement médical. Consultez votre médecin pour tout problème de santé.</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = navbar.offsetHeight;
+                    const position = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: position, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
