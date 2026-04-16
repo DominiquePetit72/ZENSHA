@@ -14,7 +14,9 @@
             --teal-dark: #1A5C77;
             --green-light: #A1D44C;
             --green-mint: #2BC2A0;
-            --deep-purple: #2E0659;
+            --deep-blue: #191660;
+            --forest: #1f2b22;
+            --forest-dark: #1a2820;
             --dark: #1a2820;
             --cream: #f9f7f4;
             --white: #ffffff;
@@ -142,13 +144,13 @@
         /* ─── HERO ─── */
         .hero {
             height: 100vh;
-            min-height: 600px;
+            min-height: 700px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--teal-dark) 50%, var(--green-mint) 100%);
+            background: linear-gradient(155deg, var(--forest) 0%, var(--deep-blue) 50%, var(--forest-dark) 100%);
             overflow: hidden;
         }
 
@@ -160,9 +162,9 @@
             right: 0;
             bottom: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(43, 194, 160, 0.3) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(0, 190, 199, 0.2) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(161, 212, 76, 0.15) 0%, transparent 50%);
+                radial-gradient(ellipse at 50% 40%, rgba(0, 190, 199, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 25% 70%, rgba(43, 194, 160, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 30%, rgba(161, 212, 76, 0.06) 0%, transparent 40%);
         }
 
         .hero-content {
@@ -172,43 +174,45 @@
         }
 
         .hero-logo {
-            width: clamp(300px, 40vw, 500px);
-            margin-bottom: 2.5rem;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--white);
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out 0.3s both;
+            width: clamp(350px, 50vw, 600px);
+            margin-bottom: 2rem;
+            animation: fadeInDown 1.2s ease-out;
+            filter: drop-shadow(0 8px 30px rgba(0, 190, 199, 0.2));
         }
 
         .hero-divider {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--green-light), var(--teal));
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--teal), var(--green-light), var(--teal), transparent);
             margin: 1.5rem auto;
             animation: fadeInUp 1s ease-out 0.5s both;
         }
 
         .hero-subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+            color: rgba(255, 255, 255, 0.85);
             font-weight: 300;
             font-style: italic;
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
             animation: fadeInUp 1s ease-out 0.7s both;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-tagline {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--green-light);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
         .hero-cta {
             display: inline-block;
             padding: 1rem 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 190, 199, 0.5);
             color: var(--white);
             text-decoration: none;
             text-transform: uppercase;
@@ -219,9 +223,9 @@
         }
 
         .hero-cta:hover {
-            background: var(--white);
-            color: var(--teal-dark);
-            border-color: var(--white);
+            background: rgba(0, 190, 199, 0.15);
+            border-color: var(--teal);
+            box-shadow: 0 0 30px rgba(0, 190, 199, 0.15);
         }
 
         .scroll-indicator {
@@ -441,7 +445,7 @@
 
         /* ─── REASONS ─── */
         .reasons {
-            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--teal-dark) 100%);
+            background: linear-gradient(155deg, var(--forest) 0%, var(--deep-blue) 50%, var(--forest-dark) 100%);
             color: var(--white);
         }
 
@@ -526,7 +530,7 @@
         .gallery-item .overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(46, 6, 89, 0.6), transparent);
+            background: linear-gradient(to top, rgba(25, 22, 96, 0.7), transparent);
             opacity: 0;
             transition: opacity 0.4s;
             display: flex;
@@ -673,7 +677,7 @@
 
         /* ─── CONTACT ─── */
         .contact {
-            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--teal-dark) 100%);
+            background: linear-gradient(155deg, var(--forest-dark) 0%, var(--deep-blue) 50%, var(--forest) 100%);
             color: var(--white);
             text-align: center;
         }
@@ -751,15 +755,15 @@
 
         /* ─── FOOTER ─── */
         footer {
-            background: var(--dark);
+            background: #111a14;
             padding: 2.5rem 2rem;
             text-align: center;
         }
 
         footer img {
-            height: 35px;
+            height: 45px;
             margin-bottom: 1rem;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         footer p {
@@ -869,8 +873,8 @@
                 padding: 4rem 1.5rem;
             }
 
-            .hero h1 {
-                letter-spacing: 6px;
+            .hero-logo {
+                width: clamp(280px, 70vw, 400px);
             }
         }
     </style>
@@ -881,7 +885,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#" class="nav-logo">
-                <img src="assets/images/logo.png" alt="Zensha">
+                <img src="assets/images/logo-cropped.png" alt="Zensha">
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">A propos</a></li>
@@ -898,9 +902,9 @@
     <!-- HERO -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <img src="assets/images/logo.png" alt="Zensha" class="hero-logo">
-            <h1>Zensha</h1>
+            <img src="assets/images/logo-cropped.png" alt="Zensha" class="hero-logo">
             <div class="hero-divider"></div>
+            <p class="hero-tagline">Naturopathie &middot; Massage &middot; Aromathérapie</p>
             <p class="hero-subtitle">Lieu de retour à soi, d'écoute du corps<br>pour retrouver l'harmonie et la paix intérieure</p>
             <a href="#services" class="hero-cta">Découvrir mes soins</a>
         </div>
@@ -1168,7 +1172,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <img src="assets/images/logo.png" alt="Zensha">
+        <img src="assets/images/logo-cropped.png" alt="Zensha">
         <p>&copy; 2025 Zensha — Naturopathie, Massage & Bien-être</p>
         <p class="disclaimer">La naturopathie ne se substitue pas à un traitement médical. Consultez votre médecin pour tout problème de santé.</p>
     </footer>
